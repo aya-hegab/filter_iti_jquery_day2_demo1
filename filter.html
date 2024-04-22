@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>filter</title>
+    <!-- <script src="jquery-3.7.1.js"></script> -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <style>
+      table,
+      td,
+      th {
+        border: 2px solid #000000;
+      }
+
+      table {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="search by first name" />
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>first name</th>
+        <th>last name</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Karim</td>
+        <td>saeed</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>mahmoud</td>
+        <td>elbasha</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>mohamed</td>
+        <td>elsayed</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>khaled</td>
+        <td>elgabry</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Mahmoud</td>
+        <td>helmy</td>
+      </tr>
+    </table>
+    <script>
+      $("input:eq(0)").on("keyup", function () {
+        let userInput = $(this).val();
+        $('tr:has("td")').each(function () {
+          // console.log($(this).children().first().next().text())
+          if (
+            $(this)
+              .children()
+              .first()
+              .next()
+              .text()
+              .toLowerCase()
+              .indexOf(userInput) != -1
+          ) {
+            $(this).show(800);
+          } else {
+            $(this).hide(800);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
